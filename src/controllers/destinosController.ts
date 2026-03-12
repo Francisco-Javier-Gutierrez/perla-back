@@ -10,14 +10,7 @@ export const getDestinos = async (req: Request, res: Response) => {
             WHERE d.activo = true
             ORDER BY d.fecha_creacion DESC
         `);
-        const imageBaseUrl = process.env.NODE_ENV === 'production' 
-            ? 'https://api.franciscojgh.com/uploads/' 
-            : 'http://localhost:5000/uploads/';
         for (const destino of destinos) {
-            // Formatear imagen portada del destino
-            if (destino.imagen_portada && !destino.imagen_portada.startsWith('http')) {
-                destino.imagen_portada = `${imageBaseUrl}${destino.imagen_portada}`;
-            }
             // Categorías como array de objetos
             const [categorias]: any = await pool.query(`
                 SELECT c.id_categoria, c.nombre
@@ -26,7 +19,7 @@ export const getDestinos = async (req: Request, res: Response) => {
                 WHERE dc.id_destino = ?
             `, [destino.id_destino]);
             destino.categorias = categorias;
-            // Obtener atractivos del destino con fotos, ubicación y calificación (Misma estructura que getDestinoById)
+            // Obtener atractivos del destino con fotos, ubicación y calificación
             const [atractivos]: any = await pool.query(`
                 SELECT a.*, c.nombre as categoria_nombre
                 FROM atractivos a
@@ -36,14 +29,12 @@ export const getDestinos = async (req: Request, res: Response) => {
             `, [destino.id_destino]);
             const mappedAtractivos = [];
             for (const atractivo of atractivos) {
-                let imagen_url = null;
-                if (atractivo.imagen_url) {
-                    imagen_url = atractivo.imagen_url.startsWith('http') ? atractivo.imagen_url : `${imageBaseUrl}${atractivo.imagen_url}`;
-                } else {
+                let imagen_url = atractivo.imagen_url || null;
+                if (!imagen_url) {
                     // Fallback to fotos_atractivo legacy logic
                     const [fotos]: any = await pool.query('SELECT url_imagen FROM fotos_atractivo WHERE id_atractivo = ? ORDER BY orden ASC LIMIT 1', [atractivo.id_atractivo]);
                     if (fotos.length > 0 && fotos[0].url_imagen) {
-                        imagen_url = fotos[0].url_imagen.startsWith('http') ? fotos[0].url_imagen : `${imageBaseUrl}${fotos[0].url_imagen}`;
+                        imagen_url = fotos[0].url_imagen;
                     }
                 }
                 const [ubicacionRows]: any = await pool.query('SELECT latitud, longitud FROM ubicaciones WHERE id_atractivo = ?', [atractivo.id_atractivo]);
@@ -101,13 +92,6 @@ export const getDestinoById = async (req: Request, res: Response) => {
             return res.status(404).json({ error: 'Destino no encontrado' });
         }
         const destino = destinoRows[0];
-        const imageBaseUrl = process.env.NODE_ENV === 'production' 
-            ? 'https://api.franciscojgh.com/uploads/' 
-            : 'http://localhost:5000/uploads/';
-        // Formatear imagen portada
-        if (destino.imagen_portada && !destino.imagen_portada.startsWith('http')) {
-            destino.imagen_portada = `${imageBaseUrl}${destino.imagen_portada}`;
-        }
         // 2. Obtener categorías del destino (array de objetos)
         const [categorias]: any = await pool.query(`
             SELECT c.id_categoria, c.nombre, c.descripcion
@@ -130,13 +114,11 @@ export const getDestinoById = async (req: Request, res: Response) => {
         `, [id]);
         const mappedAtractivos = [];
         for (const atractivo of atractivos) {
-            let imagen_url = null;
-            if (atractivo.imagen_url) {
-                imagen_url = atractivo.imagen_url.startsWith('http') ? atractivo.imagen_url : `${imageBaseUrl}${atractivo.imagen_url}`;
-            } else {
+            let imagen_url = atractivo.imagen_url || null;
+            if (!imagen_url) {
                 const [fotos]: any = await pool.query('SELECT url_imagen FROM fotos_atractivo WHERE id_atractivo = ? ORDER BY orden ASC LIMIT 1', [atractivo.id_atractivo]);
                 if (fotos.length > 0 && fotos[0].url_imagen) {
-                    imagen_url = fotos[0].url_imagen.startsWith('http') ? fotos[0].url_imagen : `${imageBaseUrl}${fotos[0].url_imagen}`;
+                    imagen_url = fotos[0].url_imagen;
                 }
             }
             const [ubicacionRows]: any = await pool.query('SELECT latitud, longitud FROM ubicaciones WHERE id_atractivo = ?', [atractivo.id_atractivo]);
