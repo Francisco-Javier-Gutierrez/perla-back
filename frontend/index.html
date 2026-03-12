@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubre los mejores destinos turísticos. Explora playas, aventuras, cultura y naturaleza.">
+    <title>TurismoApp — Explora Destinos Increíbles</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo" data-page="home">
+                <span class="logo-icon">🌎</span>
+                <span class="logo-text">TurismoApp</span>
+            </a>
+            <div class="nav-links">
+                <a href="#" class="nav-link active" data-page="home">Inicio</a>
+                <a href="#" class="nav-link" data-page="destinos">Destinos</a>
+                <a href="#" class="nav-link" data-page="categorias">Categorías</a>
+            </div>
+            <div class="nav-actions">
+                <div id="auth-buttons">
+                    <button class="btn btn-ghost" id="btn-login" data-page="login">Iniciar Sesión</button>
+                    <button class="btn btn-primary" id="btn-register" data-page="register">Registrarse</button>
+                </div>
+                <div id="user-menu" class="user-menu hidden">
+                    <button class="btn btn-ghost user-btn" id="user-menu-btn">
+                        <span class="user-avatar" id="user-avatar">U</span>
+                        <span id="user-name">Usuario</span>
+                    </button>
+                    <div class="dropdown-menu" id="dropdown-menu">
+                        <a href="#" class="dropdown-item" data-page="perfil">👤 Mi Perfil</a>
+                        <a href="#" class="dropdown-item admin-only hidden" data-page="admin">⚙️ Panel Admin</a>
+                        <hr class="dropdown-divider">
+                        <a href="#" class="dropdown-item" id="btn-logout">🚪 Cerrar Sesión</a>
+                    </div>
+                </div>
+            </div>
+            <button class="nav-mobile-toggle" id="mobile-toggle">☰</button>
+        </div>
+    </nav>
+    <!-- Main Content Container -->
+    <main id="app-content">
+        <!-- Pages will be rendered here dynamically -->
+    </main>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="logo-icon">🌎</span>
+                <span class="logo-text">TurismoApp</span>
+                <p class="footer-desc">Descubre los destinos más increíbles del mundo.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Explorar</h4>
+                <a href="#" data-page="destinos">Destinos</a>
+                <a href="#" data-page="categorias">Categorías</a>
+            </div>
+            <div class="footer-links">
+                <h4>Cuenta</h4>
+                <a href="#" data-page="login">Iniciar Sesión</a>
+                <a href="#" data-page="register">Registrarse</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 TurismoApp. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <!-- Toast notification container -->
+    <div id="toast-container" class="toast-container"></div>
+    <script src="api.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+[
+  {
+    "id_atractivo": 1,
+    "nombre": "Santuario del Señor de Chalma",
+    "destino": "Malinalco"
+  },
+  {
+    "id_atractivo": 2,
+    "nombre": "Zona Arqueológica Cuauhcalli",
+    "destino": "Malinalco"
+  },
+  {
+    "id_atractivo": 3,
+    "nombre": "Museo Luis Mario Schneider",
+    "destino": "Malinalco"
+  },
+  {
+    "id_atractivo": 5,
+    "nombre": "Balneario Municipal El Bañito",
+    "destino": "Ixtapan de la Sal"
+  },
+  {
+    "id_atractivo": 6,
+    "nombre": "Grutas de la Estrella",
+    "destino": "Tonatico"
+  },
+  {
+    "id_atractivo": 7,
+    "nombre": "Salto de Tzumpantitlán",
+    "destino": "Tonatico"
+  },
+  {
+    "id_atractivo": 19,
+    "nombre": "Santuario de Tonatico",
+    "destino": "Tonatico"
+  },
+  {
+    "id_atractivo": 20,
+    "nombre": "Río subterráneo Tonatico",
+    "destino": "Tonatico"
+  },
+  {
+    "id_atractivo": 8,
+    "nombre": "Velo de Novia",
+    "destino": "Valle de Bravo"
+  },
+  {
+    "id_atractivo": 9,
+    "nombre": "Santuario de la Mariposa Monarca",
+    "destino": "Valle de Bravo"
+  },
+  {
+    "id_atractivo": 10,
+    "nombre": "Stupa de la Paz",
+    "destino": "Valle de Bravo"
+  },
+  {
+    "id_atractivo": 11,
+    "nombre": "Cerro de la Cruz",
+    "destino": "Valle de Bravo"
+  },
+  {
+    "id_atractivo": 12,
+    "nombre": "Minas de Zacualpan",
+    "destino": "Zacualpan"
+  },
+  {
+    "id_atractivo": 31,
+    "nombre": "Iglesia del Cristo Milagroso",
+    "destino": "Zacualpan"
+  },
+  {
+    "id_atractivo": 32,
+    "nombre": "Mirador del Antiguo Minero",
+    "destino": "Zacualpan"
+  },
+  {
+    "id_atractivo": 13,
+    "nombre": "Parroquia de Sultepec",
+    "destino": "Sultepec"
+  },
+  {
+    "id_atractivo": 14,
+    "nombre": "Mirador de la Santa Cruz",
+    "destino": "Sultepec"
+  },
+  {
+    "id_atractivo": 33,
+    "nombre": "Cerro de la Herradura",
+    "destino": "Sultepec"
+  },
+  {
+    "id_atractivo": 34,
+    "nombre": "Río de las Mariposas",
+    "destino": "Sultepec"
+  },
+  {
+    "id_atractivo": 35,
+    "nombre": "Cascada el Salto Sur",
+    "destino": "Amatepec"
+  },
+  {
+    "id_atractivo": 36,
+    "nombre": "Grutas del Amate",
+    "destino": "Amatepec"
+  },
+  {
+    "id_atractivo": 15,
+    "nombre": "Cascada de San Francisco",
+    "destino": "Tlatlaya"
+  },
+  {
+    "id_atractivo": 37,
+    "nombre": "Cañadón de Huajintlán",
+    "destino": "Tlatlaya"
+  }
+]
