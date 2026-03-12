@@ -39,5 +39,4 @@ app.get('/api/health', (req, res) => {
 });
 app.listen(PORT, () => {
     console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
-    console.log(`📡 CORS habilitado para: http://localhost:5173, http://localhost:5000`);
 });

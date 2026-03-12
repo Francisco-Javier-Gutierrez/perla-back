@@ -21,7 +21,9 @@ export const getAtractivos = async (req: Request, res: Response) => {
         }
         query += ' ORDER BY a.id_atractivo DESC';
         const [rows]: any = await pool.query(query, params);
-        const imageBaseUrl = `http://localhost:5000/uploads/`;
+        const imageBaseUrl = process.env.NODE_ENV === 'production' 
+            ? 'https://api.franciscojgh.com/uploads/' 
+            : 'http://localhost:5000/uploads/';
         for (const r of rows) {
             if (r.imagen_url && !r.imagen_url.startsWith('http')) {
                 r.imagen_url = `${imageBaseUrl}${r.imagen_url}`;
@@ -48,7 +50,9 @@ export const getAtractivoCompleto = async (req: Request, res: Response) => {
             return res.status(404).json({ error: 'Atractivo no encontrado' });
         }
         const atractivo = atractivoRows[0];
-        const imageBaseUrl = `http://localhost:5000/uploads/`;
+        const imageBaseUrl = process.env.NODE_ENV === 'production' 
+            ? 'https://api.franciscojgh.com/uploads/' 
+            : 'http://localhost:5000/uploads/';
         if (atractivo.imagen_url && !atractivo.imagen_url.startsWith('http')) {
             atractivo.imagen_url = `${imageBaseUrl}${atractivo.imagen_url}`;
         }

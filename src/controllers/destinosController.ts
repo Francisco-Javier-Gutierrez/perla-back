@@ -10,7 +10,9 @@ export const getDestinos = async (req: Request, res: Response) => {
             WHERE d.activo = true
             ORDER BY d.fecha_creacion DESC
         `);
-        const imageBaseUrl = `http://localhost:5000/uploads/`;
+        const imageBaseUrl = process.env.NODE_ENV === 'production' 
+            ? 'https://api.franciscojgh.com/uploads/' 
+            : 'http://localhost:5000/uploads/';
         for (const destino of destinos) {
             // Formatear imagen portada del destino
             if (destino.imagen_portada && !destino.imagen_portada.startsWith('http')) {
@@ -99,7 +101,9 @@ export const getDestinoById = async (req: Request, res: Response) => {
             return res.status(404).json({ error: 'Destino no encontrado' });
         }
         const destino = destinoRows[0];
-        const imageBaseUrl = `http://localhost:5000/uploads/`;
+        const imageBaseUrl = process.env.NODE_ENV === 'production' 
+            ? 'https://api.franciscojgh.com/uploads/' 
+            : 'http://localhost:5000/uploads/';
         // Formatear imagen portada
         if (destino.imagen_portada && !destino.imagen_portada.startsWith('http')) {
             destino.imagen_portada = `${imageBaseUrl}${destino.imagen_portada}`;
